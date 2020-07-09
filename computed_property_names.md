@@ -22,3 +22,16 @@ const object = {
   ['age' + 'value']: 21
 }
 ```
+
+// We can also use function calls for computed property names
+
+```javascript
+function returnvalue() {
+  return "age"
+}
+
+object = {
+  [returnvalue]: 21
+} // {age: 21}
+
+```
