@@ -256,7 +256,7 @@ async function consumePromise() {
 
 ```javascript
 async function add() {
-  return 3
+  throw new Error(3)
 } 
 // 
 add().catch(e => e)
