@@ -43,8 +43,9 @@ function parent() {
   
   return sayHello()
 }
-```
 parent()() // window
+
+```
 
 * Eg 4
 
