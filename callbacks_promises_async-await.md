@@ -142,6 +142,7 @@ userPromiseReturn.then(id => console.log(id))
     .then(user => user.id)
     .then(id => console.log(id))
 */
+```
 
 #### Example from Tyler
 ```javascript
