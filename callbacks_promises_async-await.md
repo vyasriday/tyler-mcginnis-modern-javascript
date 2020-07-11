@@ -198,11 +198,11 @@ async function add(x,y) {
 const result = add(1,2)
 result.then(result => console.log(result)) // 3, I am totally blown here 😦😦
 
-// async function add() {
+async function throwError() {
   throw new Error(12) // it's like reject(12)
 }
 
-add().catch(e => console.log(e)) // 12
+throwError().catch(e => console.log(e)) // 12
 
 ```
 
