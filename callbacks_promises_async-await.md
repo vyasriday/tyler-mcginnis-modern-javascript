@@ -177,6 +177,81 @@ getPromise()
   .catch(catchError) // Error!
 ```
 
+### Async Await 
+
+* Async Await basically is API in JavaScript to consume Promises in a better way.
+* It's like writing our asynchronous code as if it is synchronous. 😲😲😲😲.
+* Adding `async` keyword in front of a function does two things
+  * function always returns a promise. Whatever is retuned from a `async` function gets wrapped in a Promise.
+  * `await` can be used inside the function.
+
+```javascript
+async function getPromise(){}
+const promise = getPromise() 
+console.log(promise) // Promise Object resolves to undefined
+
+async function add(x,y) {
+  return x+y
+}
+
+const result = add(1,2)
+result.then(result => console.log(result)) // 3, I am totally blown here 😦😦
 
 
+```
+
+```javascript
+function getUser(uid) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(user), 1000)  
+  })
+}
+
+function getUserLocation(pin) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(location), 1000)  
+  })
+}
+
+// browser sees `async` and realises there is going to be some asynchronous function call in here 
+async function consumePromise() {
+  const user = await getUser(123) // browser sees await and understands that it's not a normal function invocation. It's async code so it waits here until it gets the results.
+  const location = await getUserLocation(user.id) // whatever is resolved from promise, gets in location
+} 
+
+```
+
+#### Error Handling with `async-await`
+1.
+  * Wrap our await code in a `try catch` block.
+  * Error handling is done inside the `catch` block.
+
+```javascript
+function getUser(uid) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(user), 1000)  
+  })
+}
+
+async function consumePromise() {
+  try {
+     const user = await getUser(123)
+     console.log(user)
+  } catch (e) {
+    // rejected promise goes here
+  }
+ 
+}
+
+```
+
+2. Since all `async` functions return a promise, we can use a `.catch` on it.
+  * Use this method if the invocation of `async` function is in our hands.
+
+```javascript
+async function add() {
+  return 3
+} 
+// 
+add().catch(e => e)
 ```
