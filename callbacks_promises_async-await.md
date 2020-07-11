@@ -184,6 +184,7 @@ getPromise()
 * Adding `async` keyword in front of a function does two things
   * function always returns a promise. Whatever is retuned from a `async` function gets wrapped in a Promise.
   * `await` can be used inside the function.
+* The return value of an async function is always a promise 😮😮
 
 ```javascript
 async function getPromise(){}
@@ -191,12 +192,17 @@ const promise = getPromise()
 console.log(promise) // Promise Object resolves to undefined
 
 async function add(x,y) {
-  return x+y
+  return x+y // it is like resolve(x+y)
 }
 
 const result = add(1,2)
 result.then(result => console.log(result)) // 3, I am totally blown here 😦😦
 
+// async function add() {
+  throw new Error(12) // it's like reject(12)
+}
+
+add().catch(e => console.log(e)) // 12
 
 ```
 
